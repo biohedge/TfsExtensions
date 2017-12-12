@@ -12,7 +12,7 @@
 	"version": {
 		"Major": 1,
 		"Minor": 3,
-		"Patch": 0
+		"Patch": 1
 	},
 	"instanceNameFormat": "Waiting for Builds to finish",
     "groups": [
@@ -133,7 +133,7 @@
 			"defaultValue":  "TriggeredBuildIds",
 			"required":  true,
 			"helpMarkDown":  "A name for variable to retreive triggered builds. In case of multiple triggered builds, the values will be separated by ','",
-			"groupName":  "advancedConfiguration"
+			"groupName":  "basicConfiguration"
 		}
 	],	
     "execution": {
