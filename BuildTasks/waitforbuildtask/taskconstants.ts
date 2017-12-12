@@ -11,6 +11,7 @@ export const FailTaskIfBuildNotSuccessfulInput : string = "failTaskIfBuildsNotSu
 export const DownloadBuildArtifacts : string = "downloadBuildArtifacts";
 export const DropDirectory : string = "dropDirectory";
 export const StoreInEnvironmentVariableInput : string = "storeInEnvironmentVariable";
+export const StoreEnvironmentVariableNameInput : string = "storeEnvironmentVariableName";
 export const DemandsVariableInput : string = "demands";
 export const QueueID : string = "queueid";
 export const BuildParametersInput : string = "buildParameters";

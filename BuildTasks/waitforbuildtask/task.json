@@ -11,8 +11,8 @@
     "author": "Benjamin Huser",
 	"version": {
 		"Major": 1,
-		"Minor": 2,
-		"Patch": 2
+		"Minor": 3,
+		"Patch": 0
 	},
 	"instanceNameFormat": "Waiting for Builds to finish",
     "groups": [
@@ -125,6 +125,15 @@
 			"helpMarkDown": "If OAuth Authentication is used, leaving this empty will try to use the System.AccessToken - make sure to enable this build to allow scripts to access the token in the options!",
 			"visibleRule": "authenticationMethod != Default Credentials",
 			"groupName":  "authenticationOptions"
+		},
+		{
+			"name":  "storeEnvironmentVariableName",
+			"type":  "string",
+			"label":  "Variable name for storing the triggered build id's",
+			"defaultValue":  "TriggeredBuildIds",
+			"required":  true,
+			"helpMarkDown":  "A name for variable to retreive triggered builds. In case of multiple triggered builds, the values will be separated by ','",
+			"groupName":  "advancedConfiguration"
 		}
 	],	
     "execution": {

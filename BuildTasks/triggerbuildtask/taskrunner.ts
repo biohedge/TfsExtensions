@@ -18,6 +18,7 @@ export class TaskRunner {
     downloadBuildArtifacts: boolean;
     dropDirectory: string;
     storeInVariable: boolean;
+    storeVariableName: string;
     demands: string[];
     buildQueue: string;
     buildQueueId: number;
@@ -33,6 +34,7 @@ export class TaskRunner {
     dependentBuildsList: string[];
     dependentOnFailedBuildCondition: boolean;
     dependentFailingBuildsList: string[];
+    
 
     userId: string;
     sourceVersion: string;
@@ -90,8 +92,8 @@ export class TaskRunner {
 
     private writeVariable(triggeredBuilds: string[]): void {
         if (this.storeInVariable) {
-            console.log(`Storing triggered build id's in variable '${taskConstants.TriggeredBuildIdsEnvironmentVariableName}'`);
-            var previousValue: string = this.taskLibrary.getVariable(taskConstants.TriggeredBuildIdsEnvironmentVariableName);
+            console.log(`Storing triggered build id's in variable '${this.storeVariableName}'`);
+            var previousValue: string = this.taskLibrary.getVariable(this.storeVariableName);
 
             if (previousValue !== undefined) {
                 // concatenate variable values
@@ -100,8 +102,8 @@ export class TaskRunner {
                 triggeredBuilds.splice(0, 0, previousValue);
             }
 
-            this.taskLibrary.setVariable(taskConstants.TriggeredBuildIdsEnvironmentVariableName, triggeredBuilds.join(","));
-            console.log(`New Value of variable: '${this.taskLibrary.getVariable(taskConstants.TriggeredBuildIdsEnvironmentVariableName)}'`);
+            this.taskLibrary.setVariable(this.storeVariableName, triggeredBuilds.join(","));
+            console.log(`New Value of variable: '${this.taskLibrary.getVariable(this.storeVariableName)}'`);
         }
     }
 
@@ -335,6 +337,10 @@ export class TaskRunner {
         this.dropDirectory = this.generalFunctions.trimValue(this.taskLibrary.getInput(taskConstants.DropDirectory, false));
 
         this.storeInVariable = this.taskLibrary.getBoolInput(taskConstants.StoreInEnvironmentVariableInput, true);
+        if (this.storeInVariable) {
+            this.storeVariableName = this.generalFunctions.trimValue(this.taskLibrary.getInput(taskConstants.StoreEnvironmentVariableNameInput, true));
+        }
+
         this.demands = this.generalFunctions.trimValues(this.taskLibrary.getDelimitedInput(taskConstants.DemandsVariableInput, ",", false));
 
         this.buildQueue = this.generalFunctions.trimValue(this.taskLibrary.getInput(taskConstants.QueueID, false));

@@ -13,6 +13,7 @@ exports.FailTaskIfBuildNotSuccessfulInput = "failTaskIfBuildsNotSuccessful";
 exports.DownloadBuildArtifacts = "downloadBuildArtifacts";
 exports.DropDirectory = "dropDirectory";
 exports.StoreInEnvironmentVariableInput = "storeInEnvironmentVariable";
+exports.StoreEnvironmentVariableNameInput = "storeEnvironmentVariableName";
 exports.DemandsVariableInput = "demands";
 exports.QueueID = "queueid";
 exports.BuildParametersInput = "buildParameters";

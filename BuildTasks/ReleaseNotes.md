@@ -1,4 +1,6 @@
 # Release Notes
+## Version 2.5
+- Added possibility to set the name for triggered build variable
 
 ## Version 2.4
 - Updated documentation for fixing problems with persisted Build ID from Version 1.* script ([Version 2 TiggerBuildTask Setting TriggeredBuildIds Environment Variable Differently Than Version 1](https://github.com/huserben/TfsExtensions/issues/29))  

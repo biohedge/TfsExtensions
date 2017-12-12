@@ -8,6 +8,7 @@ export class TaskRunner {
     tfsServer: string;
     ignoreSslCertificateErrors: boolean;
     triggeredBuilds: string[];
+    storeVariableName: string;
     waitForQueuedBuildsToFinishRefreshTime: number;
     failTaskIfBuildsNotSuccessful: boolean;
     downloadBuildArtifacts: boolean;
@@ -113,8 +114,9 @@ export class TaskRunner {
         }
 
         this.dropDirectory = this.generalFunctions.trimValue(this.taskLibrary.getInput(taskConstants.DropDirectory, false));
-
-        var storedBuildInfo: string = this.taskLibrary.getVariable(taskConstants.TriggeredBuildIdsEnvironmentVariableName);
+        
+        this.storeVariableName = this.generalFunctions.trimValue(this.taskLibrary.getInput(taskConstants.StoreEnvironmentVariableNameInput, true));
+        var storedBuildInfo: string = this.taskLibrary.getVariable(this.storeVariableName);
         if (storedBuildInfo === undefined) {
             throw Error(`No build id's found to wait for. Make sure you enabled \"Store Build IDs in Variable\" 
             // under Advanced Configuration for all the Triggered Builds you want to await.`);
